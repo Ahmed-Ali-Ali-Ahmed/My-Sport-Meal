@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MySportMeal.Models.Meal>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="py-5">
+    <div class="container">
+
+
+        @foreach (var item in Model)
+        {
+
+
+
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@Url.Content(item.ImagePath)" alt="Card image cap" style="height:200px;width:200px;">
+                    <div class="card-body">
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h4>
+                        <h6 class="card-text">@Html.DisplayFor(modelIem => item.Description)</h6>
+                       
+                        <p class="card-text">
+                            @Html.ActionLink("Order", "RedirectToOrder", new { price = item.Price,meal = item.Name })
+                            @Html.ActionLink("Detail", "Details", new { ID = item.ID})
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            
+        }
+
+
+    </div>
+</div>
+
